@@ -1,9 +1,9 @@
 <?php
 
-	session_start(); 
+session_start(); 
  
 generateToken();
-//store in array
+//store in session array
 
 
 
@@ -29,6 +29,14 @@ if(isset($_POST['submit']))
 			ob_start(); //store  in buffer
 			echo $token;
 
+}
+
+if(isset($_POST['submit']))
+{
+	ob_end_clean();
+	//buffer memory clean
+	
+	validate($_POST['user'],$_POST['pass'],$_POST['user_csrf'],$_COOKIE['user_login']);
 }
 
 //validate 
